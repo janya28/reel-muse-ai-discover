@@ -51,7 +51,9 @@ export const FilterBar = ({ onFilterChange, contentType }: FilterBarProps) => {
   };
 
   const handleYearChange = (value: number[]) => {
-    const newFilters = { ...filters, year: [value[0], value[1]] };
+    // Fix: Ensure we're creating a proper tuple with two elements
+    const yearTuple: [number, number] = [value[0], value[1]];
+    const newFilters = { ...filters, year: yearTuple };
     setFilters(newFilters);
     onFilterChange(newFilters);
   };
